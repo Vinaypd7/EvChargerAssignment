@@ -1,19 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import { StyleSheet, Text, View, Button, Linking, Platform, Alert, FlatList, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Linking, Platform, Alert, FlatList, TouchableOpacity } from "react-native";
 import MapView from "react-native-maps";
 import Geolocation from 'react-native-geolocation-service';
 import { Marker } from "react-native-maps";
-import { Polyline } from "react-native-maps";
-import { PERMISSIONS, check, RESULTS, checkMultiple, requestMultiple, request } from 'react-native-permissions';
-import RNFS from 'react-native-fs';
+import { PERMISSIONS, RESULTS, checkMultiple, requestMultiple } from 'react-native-permissions';
 import { captureScreen } from "react-native-view-shot";
 import axios from 'axios';
 import { chargers } from './dynamicData.json';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function App() {
   const mapRef = useRef(null);
-  const bottomSheetRef = useRef(null);
   useEffect(() => {
     requestLocation()
   }, [])
